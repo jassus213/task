@@ -1,0 +1,23 @@
+﻿services:
+  postgres-avanpost:
+    image: postgres:11.4
+    environment:
+      POSTGRES_USER: sa
+      POSTGRES_PASSWORD: 123456
+      POSTGRES_DB: avanpost
+      PGDATA: /var/lib/postgresql/data
+    volumes:
+      - postgres-avanpost-data:/var/lib/postgresql/data
+    ports:
+      - 15432:5432
+        
+  sqlserver-avanpost:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=123456
+    ports:
+      - 11433:1433
+        
+volumes:
+  postgres-avanpost-data:
